@@ -1,5 +1,4 @@
-class Geopiece
-  def self.hello
-    'hello'
+module Geopiece
+  class Config
   end
 end
