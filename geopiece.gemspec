@@ -6,7 +6,9 @@ Gem::Specification.new do |s|
   s.description = "A placeholder"
   s.authors     = ["Ricardo Fleury"]
   s.email       = 'rfleury2@gmail.com'
-  s.files       = ["lib/geopiece.rb"]
+  s.files       = ["lib/geopiece.rb", 
+                  "lib/geopiece/USA/Usa.rb", 
+                  "lib/geopiece/country.rb"]
   s.homepage    = 'http://rubygems.org/gems/geopiece' # Placeholder
   s.license     = 'MIT'
 end
