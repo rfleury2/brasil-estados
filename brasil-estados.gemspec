@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'brasil-estados'
-  s.version     = '0.0.0'
+  s.version     = '0.1.0'
   s.date        = '2016-03-27'
   s.summary     = "A placeholder"
   s.description = "A placeholder"
