@@ -2,30 +2,45 @@ module Brasil
 	class Estado
     attr_reader :nome, :sigla, :capital, :regiao
 
-    def initialize(sigla_or_nome)
-      # sigla = to_sigla(sigla_or_nome)
-      map_estado(sigla_or_nome.to_sym)
+    def initialize(sigla)
+      map_estado(sigla.to_sym)
     end
 
 		def self.siglas
       ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
 		end
 
-    def self.nomes
-      nomes
+    def self.nomes 
+      ["Acre",
+      "Alagoas",
+      "Amapá",
+      "Amazonas",
+      "Bahia",
+      "Ceará",
+      "Distrito Federal",
+      "Espírito Santo",
+      "Goiás",
+      "Maranhão",
+      "Mato Grosso",
+      "Mato Grosso do Sul",
+      "Minas Gerais",
+      "Pará",
+      "Paraíba",
+      "Paraná",
+      "Pernambuco",
+      "Piauí",
+      "Rio de Janeiro",
+      "Rio Grande do Norte",
+      "Rio Grande do Sul",
+      "Rondônia",
+      "Roraima",
+      "Santa Catarina",
+      "São Paulo",
+      "Sergipe",
+      "Tocantins"]
     end
 
     private 
-
-    def to_sigla(sigla_or_nome)
-      if siglas.any? { |sigla| sigla.upcase == sigla_or_nome.upcase }
-        return sigla_or_nome.upcase 
-      elsif nomes.any? { |nome| nome.downcase == sigla_or_nome.downcase } 
-        raise NotImplementedError, "Later"
-      else
-        raise ArgumentError, "#{sigla_or_nome} is not a valid argument"
-      end
-    end
 
     def map_estado(sigla)
       estado = mapper[sigla]
@@ -92,36 +107,6 @@ module Brasil
         TO: {
           nome: "Tocantins", capital: "Palmas", regiao: "Norte" }
       }
-    end
-
-    def nomes 
-      ["Acre",
-      "Alagoas",
-      "Amapá",
-      "Amazonas",
-      "Bahia",
-      "Ceará",
-      "Distrito Federal",
-      "Espírito Santo",
-      "Goiás",
-      "Maranhão",
-      "Mato Grosso",
-      "Mato Grosso do Sul",
-      "Minas Gerais",
-      "Pará",
-      "Paraíba",
-      "Paraná",
-      "Pernambuco",
-      "Piauí",
-      "Rio de Janeiro",
-      "Rio Grande do Norte",
-      "Rio Grande do Sul",
-      "Rondônia",
-      "Roraima",
-      "Santa Catarina",
-      "São Paulo",
-      "Sergipe",
-      "Tocantins"]
     end
 	end
 end
