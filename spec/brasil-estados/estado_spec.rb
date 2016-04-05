@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../estado'
+require_relative '../../lib/brasil-estados/estado'
 
 RSpec.describe Brasil::Estado do
   context '.siglas' do

@@ -1,0 +1,5 @@
+test:
+  adapter: postgresql
+  host: localhost
+  database: cmm_test<%= ENV['TEST_ENV_NUMBER']%>
+  min_messages: WARNING
