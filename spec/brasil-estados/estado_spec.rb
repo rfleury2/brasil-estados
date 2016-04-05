@@ -42,5 +42,25 @@ RSpec.describe Brasil::Estado do
       expect(tocantins.sigla).to eq "TO"
       expect(sao_paulo.sigla).to eq "SP"
     end
+
+    context 'english' do
+      it '#name returns proper nome' do
+        expect(acre.name).to eq "Acre"
+        expect(tocantins.name).to eq "Tocantins"
+        expect(sao_paulo.name).to eq "São Paulo"
+      end
+
+      it '#region returns proper regiao' do
+        expect(acre.region).to eq "Norte"
+        expect(tocantins.region).to eq "Norte"
+        expect(sao_paulo.region).to eq "Sudeste"
+      end
+
+      it '#abbreviation returns proper sigla' do
+        expect(acre.abbreviation).to eq "AC"
+        expect(tocantins.abbreviation).to eq "TO"
+        expect(sao_paulo.abbreviation).to eq "SP"
+      end      
+    end
   end
 end

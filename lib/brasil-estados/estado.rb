@@ -40,6 +40,10 @@ module Brasil
       "Tocantins"]
     end
 
+    alias_method :name, :nome
+    alias_method :region, :regiao
+    alias_method :abbreviation, :sigla
+
     private 
 
     def map_estado(sigla)
