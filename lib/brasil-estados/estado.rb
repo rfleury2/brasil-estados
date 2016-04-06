@@ -7,60 +7,34 @@ module Brasil
     end
 
     def self.siglas
-      ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
+      ESTADOS.keys.map(&:to_s)
     end
 
     def self.nomes 
-      ["Acre",
-      "Alagoas",
-      "Amapá",
-      "Amazonas",
-      "Bahia",
-      "Ceará",
-      "Distrito Federal",
-      "Espírito Santo",
-      "Goiás",
-      "Maranhão",
-      "Mato Grosso",
-      "Mato Grosso do Sul",
-      "Minas Gerais",
-      "Pará",
-      "Paraíba",
-      "Paraná",
-      "Pernambuco",
-      "Piauí",
-      "Rio de Janeiro",
-      "Rio Grande do Norte",
-      "Rio Grande do Sul",
-      "Rondônia",
-      "Roraima",
-      "Santa Catarina",
-      "São Paulo",
-      "Sergipe",
-      "Tocantins"]
+      ESTADOS.values.map { |estado| estado[:nome] }
     end
 
     # English aliases
     class <<self  
-      alias_method :names, :nomes
-      alias_method :abbreviations, :siglas
+      alias_method :names,          :nomes
+      alias_method :abbreviations,  :siglas
     end  
-    alias_method :region, :regiao
-    alias_method :name, :nome
-    alias_method :region, :regiao
+    alias_method :region,       :regiao
+    alias_method :name,         :nome
+    alias_method :region,       :regiao
     alias_method :abbreviation, :sigla
 
     private 
 
     def map_estado(sigla)
-      estado = mapper[sigla]
+      estado = ESTADOS[sigla]
       @nome = estado[:nome]
       @capital = estado[:capital]
       @regiao = estado[:regiao]
       @sigla = sigla.to_s
     end
 
-    def mapper
+    ESTADOS = 
       {
         AC: {
           nome: "Acre", capital: "Rio Branco", regiao: "Norte" },
@@ -117,6 +91,5 @@ module Brasil
         TO: {
           nome: "Tocantins", capital: "Palmas", regiao: "Norte" }
       }
-    end
   end
 end
