@@ -2,15 +2,23 @@ require 'rspec'
 require_relative '../../lib/brasil-estados/estado'
 
 RSpec.describe Brasil::Estado do
-  context '.siglas' do
-    it "returns an array of siglas" do
+  context 'class methods' do
+    it ".siglas returns an array of siglas" do
       expect(Brasil::Estado.siglas).to eq ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
     end
-  end
 
-  context '.nomes' do
-    it "returns an array of nomes" do
+    it ".nomes returns an array of nomes" do
       expect(Brasil::Estado.nomes).to eq ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"]
+    end
+
+    context "English" do
+      it ".abbreviations returns an array of siglas" do
+        expect(Brasil::Estado.abbreviations).to eq ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
+      end
+
+      it ".names returns an array of nomes" do
+        expect(Brasil::Estado.names).to eq ["Acre", "Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará", "Distrito Federal", "Espírito Santo", "Goiás", "Maranhão", "Mato Grosso", "Mato Grosso do Sul", "Minas Gerais", "Pará", "Paraíba", "Paraná", "Pernambuco", "Piauí", "Rio de Janeiro", "Rio Grande do Norte", "Rio Grande do Sul", "Rondônia", "Roraima", "Santa Catarina", "São Paulo", "Sergipe", "Tocantins"]
+      end      
     end
   end
 
