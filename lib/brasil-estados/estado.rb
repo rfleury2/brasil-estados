@@ -40,6 +40,16 @@ module Brasil
       "Tocantins"]
     end
 
+    # English aliases
+    class <<self  
+      alias_method :names, :nomes
+      alias_method :abbreviations, :siglas
+    end  
+    alias_method :region, :regiao
+    alias_method :name, :nome
+    alias_method :region, :regiao
+    alias_method :abbreviation, :sigla
+
     private 
 
     def map_estado(sigla)
