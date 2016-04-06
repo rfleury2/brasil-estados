@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'brasil-estados'
-  s.version     = '0.1.0'
-  s.date        = '2016-03-27'
+  s.version     = '0.2.0'
+  s.date        = '2016-04-05'
   s.summary     = "Brasil Estados is a Ruby Gem for accessing information about states from Brazil"
   s.description = "Brasil Estados is a Ruby Gem for accessing information about states from Brazil"
   s.authors     = ["Ricardo Fleury"]
