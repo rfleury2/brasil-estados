@@ -1,14 +1,14 @@
 module Brasil
-	class Estado
+  class Estado
     attr_reader :nome, :sigla, :capital, :regiao
 
     def initialize(sigla)
       map_estado(sigla.to_sym)
     end
 
-		def self.siglas
+    def self.siglas
       ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
-		end
+    end
 
     def self.nomes 
       ["Acre",
@@ -108,5 +108,5 @@ module Brasil
           nome: "Tocantins", capital: "Palmas", regiao: "Norte" }
       }
     end
-	end
+  end
 end
