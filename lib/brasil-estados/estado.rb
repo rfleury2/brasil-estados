@@ -26,7 +26,16 @@ module Brasil
         end
       end
 
-      estados
+      raise ArgumentError, "Not a valid regiao" if estados.empty?
+      raise ArgumentError, "Invalid information requested" if !valid_info?(info_requested)
+
+      return estados unless info_requested
+
+      if !estados.empty? && valid_info?(info_requested)
+        return estados.map do |estado| 
+          estado.public_send(info_requested)
+        end
+      end
     end
 
     # English aliases
@@ -41,6 +50,10 @@ module Brasil
     alias_method :abbreviation, :sigla
 
     private 
+
+    def self.valid_info?(info_requested)
+      !info_requested || self.instance_methods.include?(info_requested.to_sym)
+    end
 
     def self.sanitize(regiao)
       regiao.downcase.capitalize.sub("-o", "-O")
