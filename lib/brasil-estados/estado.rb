@@ -1,17 +1,32 @@
+require_relative 'estado_mapper'
+
 module Brasil
+  include EstadoMapper
+
   class Estado
     attr_reader :nome, :sigla, :capital, :regiao
 
     def initialize(sigla)
-      map_estado(sigla.to_sym)
+      map_estado(sigla.upcase.to_sym)
     end
 
     def self.siglas
-      ESTADOS.keys.map(&:to_s)
+      EstadoMapper::ESTADOS.keys.map(&:to_s)
     end
 
     def self.nomes 
-      ESTADOS.values.map { |estado| estado[:nome] }
+      EstadoMapper::ESTADOS.values.map { |estado| estado[:nome] }
+    end
+
+    def self.by_regiao(regiao, info_requested = nil)
+      estados = []
+      EstadoMapper::ESTADOS.each_pair do |sigla, estado| 
+        if estado[:regiao] == sanitize(regiao)
+          estados << Brasil::Estado.new(sigla)
+        end
+      end
+
+      estados
     end
 
     # English aliases
@@ -26,70 +41,16 @@ module Brasil
 
     private 
 
+    def self.sanitize(regiao)
+      regiao.downcase.capitalize.sub("-o", "-O")
+    end
+
     def map_estado(sigla)
-      estado = ESTADOS[sigla]
+      estado = EstadoMapper::ESTADOS[sigla]
       @nome = estado[:nome]
       @capital = estado[:capital]
       @regiao = estado[:regiao]
       @sigla = sigla.to_s
     end
-
-    ESTADOS = 
-      {
-        AC: {
-          nome: "Acre", capital: "Rio Branco", regiao: "Norte" },
-        AL: {
-          nome: "Alagoas", capital: "Maceió", regiao: "Nordeste" },
-        AP: {
-          nome: "Amapá", capital: "Macapá", regiao: "Norte" },
-        AM: {
-          nome: "Amazonas", capital: "Manaus", regiao: "Norte" },
-        BA: {
-          nome: "Bahia", capital: "Salvador" , regiao: "Nordeste" },
-        CE: {
-          nome: "Ceará", capital: "Fortaleza", regiao: "Nordeste" },
-        DF: {
-          nome: "Distrito Federal", capital: "Brasília", regiao: "Centro-Oeste" },
-        ES: {
-          nome: "Espírito Santo", capital: "Vitória", regiao: "Sudeste" },
-        GO: {
-          nome: "Goiás", capital: "Goiânia", regiao: "Centro-Oeste" },
-        MA: {
-          nome: "Maranhão", capital: "São Luís", regiao: "Nordeste" },
-        MT: {
-          nome: "Mato Grosso", capital: "Cuiabá", regiao: "Centro-Oeste" },
-        MS: {
-          nome: "Mato Grosso do Sul", capital: "Campo Grande", regiao: "Centro-Oeste" },
-        MG: {
-          nome: "Minas Gerais", capital: "Belo Horizonte", regiao: "Sudeste" },
-        PA: {
-          nome: "Pará", capital: "Belém", regiao: "Norte" },
-        PB: {
-          nome: "Paraíba", capital: "João Pessoa", regiao: "Nordeste" },
-        PR: {
-          nome: "Paraná", capital: "Curitiba", regiao: "Sul" },
-        PE: {
-          nome: "Pernambuco", capital: "Recife", regiao: "Nordeste" },
-        PI: {
-          nome: "Piauí", capital: "Teresina", regiao: "Nordeste" },
-        RJ: {
-          nome: "Rio de Janeiro", capital: "Rio de Janeiro", regiao: "Sudeste" },
-        RN: {
-          nome: "Rio Grande do Norte", capital: "Natal", regiao: "Nordeste" },
-        RS: {
-          nome: "Rio Grande do Sul", capital: "Porto Alegre", regiao: "Sul" },
-        RO: {
-          nome: "Rondônia", capital: "Porto Velho", regiao: "Norte" },
-        RR: {
-          nome: "Roraima", capital: "Boa Vista", regiao: "Norte" },
-        SC: {
-          nome: "Santa Catarina", capital: "Florianópolis", regiao: "Sul" },
-        SP: {
-          nome: "São Paulo", capital: "São Paulo", regiao: "Sudeste" },
-        SE: {
-          nome: "Sergipe", capital: "Aracaju", regiao: "Nordeste" },
-        TO: {
-          nome: "Tocantins", capital: "Palmas", regiao: "Norte" }
-      }
   end
 end

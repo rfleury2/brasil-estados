@@ -1,6 +1,6 @@
 module EstadoMapper
   ESTADOS = 
-    [
+    {
       AC: {
         nome: "Acre", 
         capital: "Rio Branco", 
@@ -135,5 +135,5 @@ module EstadoMapper
         nome: "Tocantins", 
         capital: "Palmas", 
         regiao: "Norte" }
-    ]
+    }
 end
