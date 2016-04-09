@@ -23,6 +23,10 @@ There are class methods that return information regarding all states:
 
   Brasil::Estado.nomes
   # ["Acre", "Alagoas", "Amapá", ...]
+
+  Brasil::Estado.by_regiao("Norte")
+  # Array of Brasil::Estado objects
+  # note: .by_regiao is case insensitive
 ```
 
 You may also create an instance of Brasil::Estados to access information about an individual state:
@@ -34,6 +38,8 @@ You may also create an instance of Brasil::Estados to access information about a
   # tocatins.sigla    => "TO"
   # tocatins.capital  => "Palmas"
   # tocatins.regiao   => "Norte"
+
+  # note: .new is case insensitive
 ```
 
 #### English Aliases
