@@ -27,6 +27,7 @@ RSpec.describe Brasil::Estado do
       let(:estados_in_centro_oeste)  { Brasil::Estado.by_regiao("Centro-Oeste") }
       let(:estados_in_norte)         { Brasil::Estado.by_regiao("Norte") }
       let(:estados_in_nordeste)      { Brasil::Estado.by_regiao("Nordeste") }
+      let(:estados_case_insensitive) { Brasil::Estado.by_regiao("ceNtrO-oESTe") }
 
       it 'returns Brasil::Estado objects for Sul' do
         expect(estados_in_sul.length).to eq 3
@@ -53,9 +54,15 @@ RSpec.describe Brasil::Estado do
       end
 
       it 'returns Brasil::Estado objects for Centro-Oeste' do
-        expect(estados_in_centro_oeste.sample).to be_a Brasil::Estado
         expect(estados_in_centro_oeste.length).to eq 4
+        expect(estados_in_centro_oeste.sample).to be_a Brasil::Estado
         expect(estados_in_centro_oeste.map(&:sigla)).to eq ["DF", "GO", "MT", "MS"]
+      end
+
+      it 'is case insensitive' do
+        expect(estados_case_insensitive.length).to eq 4
+        expect(estados_case_insensitive.sample).to be_a Brasil::Estado
+        expect(estados_case_insensitive.map(&:sigla)).to eq ["DF", "GO", "MT", "MS"]
       end
     end
   end
