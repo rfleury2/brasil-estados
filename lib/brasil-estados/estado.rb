@@ -33,6 +33,7 @@ module Brasil
     class <<self  
       alias_method :names,          :nomes
       alias_method :abbreviations,  :siglas
+      alias_method :by_region,      :by_regiao
     end  
     alias_method :region,       :regiao
     alias_method :name,         :nome

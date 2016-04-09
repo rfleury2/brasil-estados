@@ -64,6 +64,16 @@ RSpec.describe Brasil::Estado do
         expect(estados_case_insensitive.sample).to be_a Brasil::Estado
         expect(estados_case_insensitive.map(&:sigla)).to eq ["DF", "GO", "MT", "MS"]
       end
+
+      context 'English' do
+        let(:estados_in_sudeste)       { Brasil::Estado.by_region("Sudeste") }
+
+        it 'returns Brasil::Estado objects for Sudeste' do
+          expect(estados_in_sudeste.length).to eq 4
+          expect(estados_in_sudeste.sample).to be_a Brasil::Estado
+          expect(estados_in_sudeste.map(&:sigla)).to eq ["ES", "MG", "RJ", "SP"]
+        end
+      end
     end
   end
 
