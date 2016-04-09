@@ -35,3 +35,15 @@ You may also create an instance of Brasil::Estados to access information about a
   # tocatins.capital  => "Palmas"
   # tocatins.regiao   => "Norte"
 ```
+
+#### English Aliases
+| Portuguese | English |
+|---|---|
+| ```.nomes``` | ```.names``` |
+| ```.siglas``` | ```.abbreviations``` |
+| ```.by_regiao``` | ```.by_region``` |
+| ```#capital``` | ```#capital``` |
+| ```#nome``` | ```#name``` |
+| ```#regiao``` | ```#region``` |
+| ```#sigla``` | ```#abbreviation``` |
+ 
