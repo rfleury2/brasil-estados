@@ -18,7 +18,7 @@ module Brasil
       EstadoMapper::ESTADOS.values.map { |estado| estado[:nome] }
     end
 
-    def self.by_regiao(regiao, info_requested = nil)
+    def self.by_regiao(regiao)
       estados = []
       EstadoMapper::ESTADOS.each_pair do |sigla, estado| 
         if estado[:regiao] == sanitize(regiao)
@@ -27,15 +27,7 @@ module Brasil
       end
 
       raise ArgumentError, "Not a valid regiao" if estados.empty?
-      raise ArgumentError, "Invalid information requested" if !valid_info?(info_requested)
-
-      return estados unless info_requested
-
-      if !estados.empty? && valid_info?(info_requested)
-        return estados.map do |estado| 
-          estado.public_send(info_requested)
-        end
-      end
+      estados
     end
 
     # English aliases

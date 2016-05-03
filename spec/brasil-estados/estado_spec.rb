@@ -70,28 +70,6 @@ RSpec.describe Brasil::Estado do
         expect(estados_case_insensitive.map(&:sigla)).to eq ["DF", "GO", "MT", "MS"]
       end
 
-      context 'specific information requested' do
-        let(:estados_in_sudeste)       { Brasil::Estado.by_regiao("Sudeste", "sigla") }
-        let(:estados_in_sul)           { Brasil::Estado.by_regiao("Sul", "name") }
-        let(:invalid)                  { Brasil::Estado.by_regiao("Sudeste", "invalid") }
-
-        it 'returns an array of siglas for Sudeste' do
-          expect(estados_in_sudeste.length).to eq 4
-          expect(estados_in_sudeste).to be_a Array
-          expect(estados_in_sudeste).to eq ["ES", "MG", "RJ", "SP"]
-        end
-
-        it 'returns an array of nomes for Sul (English test)' do
-          expect(estados_in_sul.length).to eq 3
-          expect(estados_in_sul).to be_a Array
-          expect(estados_in_sul).to eq ["Paraná", "Rio Grande do Sul", "Santa Catarina"]
-        end
-
-        it 'raises ArgumentError on invalid mapper argument' do
-          expect{invalid}.to raise_error ArgumentError
-        end
-      end
-
       context 'English' do
         let(:estados_in_sudeste)       { Brasil::Estado.by_region("Sudeste") }
 
